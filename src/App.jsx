@@ -12,7 +12,7 @@ import Contact from './pages/Contact';
 function App() {
   return (
     <Router>
-      <div className="min-h-screen flex flex-col bg-[#F8FAFC]">
+      <div className="min-h-screen flex flex-col bg-[#F8FAFC] overflow-x-hidden">
         <Navbar />
         <main className="flex-grow">
           <Routes>

@@ -6,6 +6,12 @@
   --color-light-bg: #F8FAFC;
 }
 
+html, body {
+  overflow-x: hidden;
+  width: 100%;
+  position: relative;
+}
+
 html {
   scroll-behavior: smooth;
 }
@@ -14,4 +20,5 @@ body {
   margin: 0;
   font-family: 'Inter', sans-serif;
   background-color: var(--color-light-bg);
+  -webkit-overflow-scrolling: touch;
 }
