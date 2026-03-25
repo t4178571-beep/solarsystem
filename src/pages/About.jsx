@@ -37,9 +37,9 @@ const About = () => {
                 <div className="max-w-7xl mx-auto grid lg:grid-cols-2 gap-16 items-center">
                     <div className="relative group">
                         <div className="absolute inset-0 bg-primary/20 rounded-[3rem] blur-3xl group-hover:bg-primary/30 transition duration-700 mx-4" />
-                        <img 
-                            src="https://images.unsplash.com/photo-1509391366360-2e959784a276?w=800&q=80" 
-                            alt="Our Story" 
+                        <img
+                            src="https://images.unsplash.com/photo-1509391366360-2e959784a276?w=800&q=80"
+                            alt="Our Story"
                             className="relative rounded-[3rem] shadow-2xl z-10"
                         />
                     </div>
