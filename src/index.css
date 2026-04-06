@@ -6,7 +6,8 @@
   --color-light-bg: #F8FAFC;
 }
 
-html, body {
+html,
+body {
   overflow-x: hidden;
   width: 100%;
   position: relative;
@@ -21,4 +22,17 @@ body {
   font-family: 'Inter', sans-serif;
   background-color: var(--color-light-bg);
   -webkit-overflow-scrolling: touch;
+}
+
+/* Hide scrollbar for all browsers */
+* {
+  scrollbar-width: none;
+  /* Firefox */
+  -ms-overflow-style: none;
+  /* IE & Edge */
+}
+
+*::-webkit-scrollbar {
+  display: none;
+  /* Chrome, Safari, Opera */
 }

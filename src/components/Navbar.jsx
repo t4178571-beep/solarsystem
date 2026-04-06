@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { Sun, Phone, Menu, X, MessageCircle } from 'lucide-react';
+import { Zap, Phone, Menu, X, MessageCircle } from 'lucide-react';
 import { SITE } from '../data/siteData';
 
 const Navbar = () => {
@@ -16,7 +16,6 @@ const Navbar = () => {
         return () => window.removeEventListener('scroll', handleScroll);
     }, []);
 
-    // Scroll to top when location changes
     useEffect(() => {
         window.scrollTo(0, 0);
     }, [location.pathname]);
@@ -34,11 +33,14 @@ const Navbar = () => {
             <nav className="max-w-7xl mx-auto px-6 flex items-center justify-between">
                 <Link to="/" className="flex items-center gap-2 group">
                     <div className="bg-primary/10 p-2 rounded-xl group-hover:bg-primary/20 transition-colors">
-                        <Sun className="h-8 w-8 text-primary group-hover:rotate-90 transition duration-700" />
+                        <Zap className="h-8 w-8 text-primary group-hover:scale-110 transition duration-300" />
                     </div>
-                    <span className="text-2xl font-black text-secondary tracking-tighter">
-                        Solar<span className="text-primary italic">Pro</span>
-                    </span>
+                    <div className="flex flex-col leading-none">
+                        <span className="text-2xl font-black text-secondary tracking-tighter">
+                            D.<span className="text-primary italic">Energy</span>
+                        </span>
+                        <span className="text-[9px] font-bold text-gray-400 uppercase tracking-widest hidden sm:block">Go Green With Solar Power</span>
+                    </div>
                 </Link>
 
                 {/* Desktop Nav */}
@@ -87,8 +89,11 @@ const Navbar = () => {
                 <div className="p-6 flex flex-col h-full overflow-y-auto">
                     <div className="flex items-center justify-between mb-8">
                         <Link to="/" onClick={() => setIsOpen(false)} className="flex items-center gap-2">
-                             <Sun className="h-8 w-8 text-primary" />
-                             <span className="text-xl font-black text-secondary tracking-tighter uppercase">Solar<span className="text-primary italic">Pro</span></span>
+                            <Zap className="h-8 w-8 text-primary" />
+                            <div className="flex flex-col leading-none">
+                                <span className="text-xl font-black text-secondary tracking-tighter">D.<span className="text-primary italic">Energy</span></span>
+                                <span className="text-[9px] font-bold text-gray-400 uppercase tracking-widest">Go Green With Solar Power</span>
+                            </div>
                         </Link>
                         <button onClick={() => setIsOpen(false)} className="p-3 bg-gray-50 rounded-xl text-secondary hover:bg-gray-100 transition-colors">
                             <X size={24} />
@@ -117,9 +122,9 @@ const Navbar = () => {
                             <MessageCircle size={20} /> <span className="text-sm">WhatsApp</span>
                         </a>
                     </div>
-                    
+
                     <div className="text-center mt-6 text-gray-400 text-xs font-medium uppercase tracking-widest pb-4">
-                        Gujarat's Trusted Solar Partner
+                        Go Green With Solar Power
                     </div>
                 </div>
             </div>
