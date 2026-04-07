@@ -36,7 +36,7 @@ export const STATS = [
 ];
 
 export const SERVICES = [
-  { icon: '☀️', title: 'Solar Installation', desc: 'Complete residential & commercial solar panel installation. End-to-end I&C work with certified team.', href: '/services', img: '/projects/ind-6.jpg' },
+  { icon: '☀️', title: 'Solar Installation', desc: 'Complete residential & commercial solar panel installation. End-to-end I&C work with certified team.', href: '/services', img: '/projects/solar-install.jpeg' },
   { icon: '🔩', title: 'Custom Fabrication', desc: 'Custom solar mounting structures and fabrication work for any roof type or ground mount system.', href: '/services', img: '/projects/ind-2.jpg' },
   { icon: '🛠️', title: 'Repair & Rework', desc: 'Expert repair and rework services for existing solar systems. Quick turnaround, guaranteed results.', href: '/services', img: '/projects/ind-1.jpg' },
   { icon: '🔍', title: 'Fault Diagnosis', desc: 'Advanced fault diagnosis and troubleshooting for solar panels, inverters, and entire systems.', href: '/services', img: '/projects/ind-4.jpg' },
@@ -107,7 +107,7 @@ export const PRODUCTS_DETAIL = [
     title: 'Solar Installation',
     desc: 'Complete end-to-end solar installation for homes and businesses. We handle everything — site survey, custom design, DISCOM approval, subsidy application, and professional I&C installation.',
     features: ['⚡ Systems: 1kW to 1MW+', '💰 Up to 40% govt subsidy', '📋 All paperwork handled', '🛡️ 25-year panel warranty', '📱 App-based monitoring'],
-    img: '/projects/ind-6.jpg'
+    img: '/projects/solar-install.jpeg'
   },
   {
     tag: '🔩 Precision Work',
