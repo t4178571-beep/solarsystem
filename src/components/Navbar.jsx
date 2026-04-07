@@ -30,7 +30,7 @@ const Navbar = () => {
     ];
 
     return (
-        <header className={`sticky top-0 z-50 transition-all duration-300 ${scrolled ? 'bg-white/90 backdrop-blur-lg shadow-xl shadow-gray-200/50 py-3' : 'bg-white py-5'}`}>
+        <header className={`sticky top-0 z-50 transition-all duration-500 ${scrolled ? 'bg-white/90 backdrop-blur-lg shadow-sm py-3' : 'bg-transparent py-4'}`}>
             <nav className="max-w-7xl mx-auto px-6 flex items-center justify-between">
                 <Link to="/" className="flex items-center gap-2 group">
                     <img src={logo} alt="D.Energy Solar Logo" className="h-10 sm:h-12 w-auto object-contain" />
@@ -46,7 +46,7 @@ const Navbar = () => {
                                 className={`hover:text-primary transition-all relative group ${location.pathname === link.path ? 'text-primary' : ''}`}
                             >
                                 {link.name}
-                                <span className={`absolute -bottom-1 left-0 w-0 h-0.5 bg-primary transition-all duration-300 group-hover:w-full ${location.pathname === link.path ? 'w-full' : ''}`} />
+                                <span className={`absolute -bottom-1 left-0 h-0.5 bg-primary transition-all duration-300 ${location.pathname === link.path ? 'w-full' : 'w-0 group-hover:w-full'}`} />
                             </Link>
                         ))}
                     </div>
