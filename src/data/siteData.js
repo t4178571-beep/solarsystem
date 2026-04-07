@@ -1,12 +1,12 @@
 // ── SITE CONFIG — client sirf yahan se update kare ──
 export const SITE = {
   name: 'D.Energy',
-  tagline: 'Go Green With Solar Power',
+  tagline: '',
   subTagline: 'Installation & Commissioning Work I&C | Residential & Commercial All Types Solar Project Installation Contractor',
   phone: '+917984236395',
-  phone2: '+919574179638',
+  // phone2: '+919574179638',
   phoneDisplay: '+91 7984236395',
-  phone2Display: '+91 9574179638',
+  // phone2Display: '+91 9574179638',
   whatsapp: '917984236395',
   email: 'denergysolarsystem@gmail.com',
   owner: 'Girvatsinh Chauhan',
@@ -36,14 +36,13 @@ export const STATS = [
 ];
 
 export const SERVICES = [
-  { icon: '☀️', title: 'Solar Installation', desc: 'Complete residential & commercial solar panel installation. End-to-end I&C work with certified team.', href: '/services' },
-  { icon: '🔩', title: 'Custom Fabrication', desc: 'Custom solar mounting structures and fabrication work for any roof type or ground mount system.', href: '/services' },
-  { icon: '🔧', title: 'Solar Plumbing', desc: 'Professional solar plumbing for water heating systems, pump connections and pipeline work.', href: '/services' },
-  { icon: '🛠️', title: 'Repair & Rework', desc: 'Expert repair and rework services for existing solar systems. Quick turnaround, guaranteed results.', href: '/services' },
-  { icon: '🔍', title: 'Fault Diagnosis', desc: 'Advanced fault diagnosis and troubleshooting for solar panels, inverters, and entire systems.', href: '/services' },
-  { icon: '📋', title: 'AMC & Maintenance', desc: 'Annual maintenance contracts. Keep your system at peak performance year-round.', href: '/services' },
-  { icon: '⚡', title: 'Solar I&C Expert', desc: 'Specialized Installation & Commissioning (I&C) work for large-scale residential and commercial projects.', href: '/services' },
-  { icon: '🤝', title: 'Sub-Contracting', desc: 'Reliable sub-contracting services for solar EPC companies. Skilled team, timely delivery.', href: '/services' },
+  { icon: '☀️', title: 'Solar Installation', desc: 'Complete residential & commercial solar panel installation. End-to-end I&C work with certified team.', href: '/services', img: '/projects/ind-6.jpg' },
+  { icon: '🔩', title: 'Custom Fabrication', desc: 'Custom solar mounting structures and fabrication work for any roof type or ground mount system.', href: '/services', img: '/projects/ind-2.jpg' },
+  { icon: '🛠️', title: 'Repair & Rework', desc: 'Expert repair and rework services for existing solar systems. Quick turnaround, guaranteed results.', href: '/services', img: '/projects/ind-1.jpg' },
+  { icon: '🔍', title: 'Fault Diagnosis', desc: 'Advanced fault diagnosis and troubleshooting for solar panels, inverters, and entire systems.', href: '/services', img: '/projects/ind-4.jpg' },
+  { icon: '📋', title: 'AMC & Maintenance', desc: 'Annual maintenance contracts. Keep your system at peak performance year-round.', href: '/services', img: '/projects/res-2.jpg' },
+  { icon: '⚡', title: 'Solar I&C Expert', desc: 'Specialized Installation & Commissioning (I&C) work for large-scale residential and commercial projects.', href: '/services', img: '/projects/ic-team.jpg' },
+  { icon: '🤝', title: 'Sub-Contracting', desc: 'Reliable sub-contracting services for solar EPC companies. Skilled team, timely delivery.', href: '/services', img: '/projects/comm-1.jpg' },
 ];
 
 export const WHY_US = [
@@ -62,15 +61,24 @@ export const STEPS = [
 ];
 
 export const GALLERY = [
-  { src: 'https://images.unsplash.com/photo-1611365892117-00ac5ef43c90?w=900&q=80', cap: '🏠 Residential – 5kW | Anand', cat: 'residential', span2: true },
-  { src: 'https://images.unsplash.com/photo-1594818379496-da1e345b0ded?w=600&q=80', cap: '🏭 Commercial – 50kW | Vadodara', cat: 'commercial' },
-  { src: 'https://images.unsplash.com/photo-1509391366360-2e959784a276?w=600&q=80', cap: '🏗️ Industrial – 100kW | Anand', cat: 'industrial' },
-  { src: 'https://images.unsplash.com/photo-1497440001374-f26997328c1b?w=600&q=80', cap: '💧 Solar Pump – 7.5HP | Kheda', cat: 'pump' },
-  { src: 'https://images.unsplash.com/photo-1508514177221-188b1cf16e9d?w=600&q=80', cap: '🏠 Residential – 10kW | Anand', cat: 'residential' },
-  { src: 'https://images.unsplash.com/photo-1466611653911-95081537e5b7?w=600&q=80', cap: '🏭 Commercial – 30kW | Nadiad', cat: 'commercial' },
-  { src: 'https://images.unsplash.com/photo-1593642632559-0c6d3fc62b89?w=600&q=80', cap: '🏠 Residential – 3kW | Anand', cat: 'residential' },
-  { src: 'https://images.unsplash.com/photo-1532601224476-15c79f2f7a51?w=600&q=80', cap: '🏗️ Industrial – 200kW | Ankleshwar', cat: 'industrial' },
-  { src: 'https://images.unsplash.com/photo-1471666875520-c75081f42081?w=600&q=80', cap: '💧 Solar Pump – 5HP | Khambhat', cat: 'pump' },
+  { src: '/projects/tech-1.jpg', cap: '⚡ Technical – INVT Inverter & AC/DC Box', cat: 'technical', span2: true },
+  { src: '/projects/tech-2.jpg', cap: '⚡ Technical – Solar System Components', cat: 'technical' },
+  { src: '/projects/tech-3.jpg', cap: '⚡ Technical – Distribution Panel Setup', cat: 'technical' },
+  { src: '/projects/tech-4.jpg', cap: '⚡ Technical – Inverter Installation', cat: 'technical' },
+  { src: '/projects/tech-5.jpg', cap: '⚡ Technical – System Commissioning', cat: 'technical' },
+  { src: '/projects/comm-1.jpg', cap: '🏭 Commercial – 50kW | Vadodara', cat: 'commercial', span2: true },
+  { src: '/projects/comm-2.png', cap: '🏭 Commercial – 30kW | Anand', cat: 'commercial' },
+  { src: '/projects/ind-1.jpg', cap: '🏗️ Industrial – 150kW | Halol', cat: 'industrial' },
+  { src: '/projects/ind-2.jpg', cap: '🏗️ Industrial – 200kW | Ankleshwar', cat: 'industrial' },
+  { src: '/projects/ind-3.jpg', cap: '🏗️ Industrial – 1.0MW | Savli', cat: 'industrial' },
+  { src: '/projects/ind-4.jpg', cap: '🏗️ Industrial – 50kW | Vaghodia', cat: 'industrial' },
+  { src: '/projects/ind-5.jpg', cap: '🏗️ Industrial – 300kW | Changodar', cat: 'industrial' },
+  { src: '/projects/ind-6.jpg', cap: '🏗️ Industrial – 500kW | Vitthal Udyognagar', cat: 'industrial', span2: true },
+  { src: '/projects/res-1.jpg', cap: '🏠 Residential – 5kW | Anand', cat: 'residential' },
+  { src: '/projects/res-2.jpg', cap: '🏠 Residential – 10kW | Karamsad', cat: 'residential', span2: true },
+  { src: '/projects/res-3.jpg', cap: '🏠 Residential – 3kW | Valasad', cat: 'residential' },
+  { src: '/projects/res-4.jpg', cap: '🏠 Residential – 8kW | Nadiad', cat: 'residential' },
+  { src: '/projects/res-6.jpg', cap: '🏠 Residential – 6kW | Anand', cat: 'residential' },
 ];
 
 export const REVIEWS = [
@@ -84,9 +92,6 @@ export const REVIEWS = [
   { name: 'Dhiraj Gupta', sub: '1 review', stars: 5, time: '2 months ago', text: 'good✌️' },
 ];
 
-
-
-
 export const FAQS = [
   { q: 'How much will I save with solar?', a: 'Most customers save ₹2,000–₹8,000/month. With subsidy, payback is 3–5 years — then FREE electricity for 20+ years.' },
   { q: 'How long does installation take?', a: 'For homes (1–10kW), installation takes 1–3 days. Total process including approvals: 2–4 weeks. We handle everything.' },
@@ -96,11 +101,65 @@ export const FAQS = [
 ];
 
 export const PRODUCTS_DETAIL = [
-  { tag: '⭐ Most Popular', icon: '☀️', title: 'Solar Installation', desc: 'Complete end-to-end solar installation for homes and businesses. We handle everything — site survey, custom design, DISCOM approval, subsidy application, and professional I&C installation.', features: ['⚡ Systems: 1kW to 1MW+', '💰 Up to 40% govt subsidy', '📋 All paperwork handled', '🛡️ 25-year panel warranty', '📱 App-based monitoring'], img: 'https://images.unsplash.com/photo-1611365892117-00ac5ef43c90?w=800&q=80' },
-  { tag: '🔩 Precision Work', icon: '🔩', title: 'Custom Fabrication', desc: 'Expert custom fabrication of solar mounting structures for any roof type — RCC, tin shed, ground mount, or industrial. Strong, corrosion-resistant, and wind-load certified structures.', features: ['🏗️ All roof types supported', '🔩 Hot-dip galvanized steel', '📐 Custom angle & tilt design', '✅ Wind-load certified', '⚡ Fast fabrication turnaround'], img: 'https://images.unsplash.com/photo-1504711331083-9c895941bf81?w=800&q=80', reverse: true },
-  { tag: '🔧 Expert Repair', icon: '🛠️', title: 'Repair, Rework & Fault Diagnosis', desc: 'Comprehensive repair, rework, and fault diagnosis services. We identify and fix issues in solar panels, inverters, wiring, and complete systems — quickly and reliably.', features: ['🔍 Advanced fault diagnosis', '🔌 Inverter & panel repair', '🔄 Wiring rework & upgrades', '⚡ Emergency support', '📊 Performance optimization'], img: 'https://images.unsplash.com/photo-1509391366360-2e959784a276?w=800&q=80' },
-  { tag: '⚡ I&C Specialists', icon: '⚡', title: 'Solar I&C & Sub-Contracting', desc: 'Specialized Installation & Commissioning (I&C) services and reliable sub-contracting for solar EPC companies. Skilled team, safety-compliant, and timely project delivery.', features: ['⚡ Large-scale I&C projects', '🤝 EPC sub-contracting', '👷 Certified I&C engineers', '📋 Safety & compliance ready', '🗓️ On-time delivery guarantee'], img: 'https://images.unsplash.com/photo-1594818379496-da1e345b0ded?w=800&q=80', reverse: true },
-  { tag: '🔧 Keep It Running', icon: '📋', title: 'AMC & Maintenance', desc: 'Annual maintenance contracts to keep your solar system generating at peak efficiency year-round. Includes panel cleaning, inverter checks, and performance reports.', features: ['🗓️ Quarterly site visits', '🧹 Panel cleaning & inspection', '📞 Priority emergency support', '📈 Quarterly performance report', '🔌 Inverter & wiring checks'], img: 'https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?w=800&q=80' },
+  {
+    tag: '⭐ Most Popular',
+    icon: '☀️',
+    title: 'Solar Installation',
+    desc: 'Complete end-to-end solar installation for homes and businesses. We handle everything — site survey, custom design, DISCOM approval, subsidy application, and professional I&C installation.',
+    features: ['⚡ Systems: 1kW to 1MW+', '💰 Up to 40% govt subsidy', '📋 All paperwork handled', '🛡️ 25-year panel warranty', '📱 App-based monitoring'],
+    img: '/projects/ind-6.jpg'
+  },
+  {
+    tag: '🔩 Precision Work',
+    icon: '🔩',
+    title: 'Custom Fabrication',
+    desc: 'Expert custom fabrication of solar mounting structures for any roof type — RCC, tin shed, ground mount, or industrial. Strong, corrosion-resistant, and wind-load certified structures.',
+    features: ['🏗️ All roof types supported', '🔩 Hot-dip galvanized steel', '📐 Custom angle & tilt design', '✅ Wind-load certified', '⚡ Fast fabrication turnaround'],
+    img: '/projects/ind-2.jpg',
+    reverse: true
+  },
+  {
+    tag: '🔧 Expert Repair',
+    icon: '🛠️',
+    title: 'Repair & Rework',
+    desc: 'Comprehensive repair and rework services for existing solar systems. We help you upgrade old wiring, fix damaged structures, and restore your system to its original efficiency.',
+    features: ['🔌 Wiring rework & upgrades', '🏗️ Structure strengthening', '🔄 System modernization', '⚡ Emergency support', '📊 Efficiency restoration'],
+    img: '/projects/ind-1.jpg'
+  },
+  {
+    tag: '🔍 Precision Testing',
+    icon: '🔍',
+    title: 'Fault Diagnosis',
+    desc: 'Advanced fault diagnosis and troubleshooting for problematic solar systems. We use high-precision tools to identify hidden issues in panels, inverters, and electrical components.',
+    features: ['🔍 Hot-spot detection', '📟 Inverter error clearing', '🔌 Continuity & insulation tests', '📊 Detailed health reports', '⚡ Root cause analysis'],
+    img: '/projects/ind-4.jpg',
+    reverse: true
+  },
+  {
+    tag: '⚡ I&C Specialists',
+    icon: '⚡',
+    title: 'Solar I&C Expert',
+    desc: 'Specialized Installation & Commissioning (I&C) services for large-scale projects. Our certified team ensures that every component is installed to the highest industry standards.',
+    features: ['⚡ Large-scale I&C projects', '👷 Certified I&C team', '📋 Safety & compliance ready', '🏗️ Precision array alignment', '🔌 System testing & turn-on'],
+    img: '/projects/ic-team.jpg'
+  },
+  {
+    tag: '🤝 Reliable Partner',
+    icon: '🤝',
+    title: 'Sub-Contracting',
+    desc: 'Reliable sub-contracting services for solar EPC companies. We provide high-quality labor and technical expertise to help you deliver your projects on time and within budget.',
+    features: ['🤝 EPC sub-contracting', '🗓️ On-time delivery guarantee', '👷 Skilled technical manpower', '📦 Resource management', '✅ Quality assurance'],
+    img: '/projects/comm-1.jpg',
+    reverse: true
+  },
+  {
+    tag: '🔧 Keep It Running',
+    icon: '📋',
+    title: 'AMC & Maintenance',
+    desc: 'Annual maintenance contracts to keep your solar system generating at peak efficiency year-round. Includes panel cleaning, inverter checks, and performance reports.',
+    features: ['🗓️ Quarterly site visits', '🧹 Panel cleaning & inspection', '📞 Priority emergency support', '📈 Quarterly performance report', '🔌 Inverter & wiring checks'],
+    img: '/projects/res-2.jpg'
+  },
 ];
 
 export const CERTIFICATIONS = [

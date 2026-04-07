@@ -2,6 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { Mail, Phone, MapPin, Zap, Facebook, Instagram, Youtube, ArrowUpRight } from 'lucide-react';
 import { SITE } from '../data/siteData';
+import logo from '../assets/logo.png';
 
 const Footer = () => (
     <footer className="bg-secondary text-gray-400 pt-12 pb-6 px-6 mt-auto relative overflow-hidden">
@@ -12,13 +13,7 @@ const Footer = () => (
             {/* Brand */}
             <div className="space-y-4 col-span-1 lg:col-span-1">
                 <Link to="/" className="flex items-center gap-2">
-                    <Zap className="h-7 w-7 text-primary" />
-                    <div className="flex flex-col leading-none">
-                        <span className="text-xl font-black text-white tracking-tighter">
-                            D.<span className="text-primary italic">Energy</span>
-                        </span>
-                        <span className="text-[8px] font-bold text-gray-500 uppercase tracking-widest">Go Green With Solar Power</span>
-                    </div>
+                    <img src={logo} alt="D.Energy Solar Logo" className="h-10 w-auto object-contain" />
                 </Link>
                 <p className="text-gray-500 leading-relaxed text-xs">
                     {SITE.city}'s trusted solar I&C contractor. Residential & commercial all types solar project installation. 10+ years of excellence.
@@ -132,7 +127,7 @@ const Footer = () => (
         <div className="max-w-7xl mx-auto mt-8 pt-5 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-3">
             <div>
                 <p className="text-[10px] text-gray-600 font-bold">
-                    © {new Date().getFullYear()} {SITE.name} | {SITE.tagline}
+                    © {new Date().getFullYear()} {SITE.name}
                 </p>
                 <p className="text-[9px] text-gray-700 mt-0.5">
                     Owner: {SITE.owner} | MSME: {SITE.msme} | GSTIN: {SITE.gstin}

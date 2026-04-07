@@ -3,85 +3,102 @@ import { Link } from 'react-router-dom';
 import { MessageCircle, Zap, ShieldCheck, Star, ArrowRight, Phone, ChevronLeft, ChevronRight, Plus, CheckCircle2, TrendingDown } from 'lucide-react';
 import { SLIDES, STATS, SERVICES, WHY_US, STEPS, GALLERY, REVIEWS, FAQS, SITE } from '../data/siteData';
 
+// Swiper
+import { Swiper, SwiperSlide } from 'swiper/react';
+import { Autoplay, Pagination, Navigation } from 'swiper/modules';
+import 'swiper/css';
+import 'swiper/css/pagination';
+import 'swiper/css/navigation';
+
+
 // --- Components ---
 
 const HeroSlider = () => {
-    const [cur, setCur] = useState(0);
-    const timerRef = useRef();
-
-    const go = n => setCur(p => (n + SLIDES.length) % SLIDES.length);
-    const startAuto = () => { timerRef.current = setInterval(() => setCur(p => (p + 1) % SLIDES.length), 6000); };
-    const stopAuto = () => clearInterval(timerRef.current);
-
-    useEffect(() => {
-        startAuto();
-        return stopAuto;
-    }, []);
-
-    const s = SLIDES[cur];
-
     return (
-        /* Mobile par height [30vh] aur min-h reset kiya hai, desktop par wahi [80vh] rakha hai */
-        <section
-            className="relative bg-secondary overflow-hidden"
-            onMouseEnter={stopAuto}
-            onMouseLeave={startAuto}
-        >
-            {/* MOBILE: aspect-[16/9] (Ya jo aapki image ka ratio ho) use kiya hai height ki jagah.
-               DESKTOP: md:h-[80vh] wahi rahega.
-            */}
-            <div
-                className="flex transition-transform duration-1000 ease-in-out aspect-[16/9] md:aspect-auto md:h-[80vh]"
-                style={{ transform: `translateX(-${cur * 100}%)` }}
+        <section className="relative bg-secondary overflow-hidden hero-swiper-container">
+            <Swiper
+                modules={[Autoplay, Pagination, Navigation]}
+                loop={true}
+                autoplay={{ delay: 6000, disableOnInteraction: false }}
+                pagination={{
+                    clickable: true,
+                    renderBullet: (index, className) => {
+                        return `<span class="${className} custom-bullet"></span>`;
+                    }
+                }}
+                className="h-auto md:h-[80vh]"
             >
                 {SLIDES.map((sl, i) => (
-                    <div key={i} className="w-full h-full flex-shrink-0 relative">
-                        {/* Mobile par overlay thoda light rakha hai takki image clear dikhe */}
-                        <div className="absolute inset-0 bg-gradient-to-r from-secondary/80 via-secondary/20 to-transparent z-10 md:via-secondary/40" />
+                    <SwiperSlide key={i} className="relative">
+                        <div className="relative aspect-[16/9] md:aspect-auto md:h-[80vh]">
+                            <div className="absolute inset-0 bg-gradient-to-r from-secondary/80 via-secondary/20 to-transparent z-10 md:via-secondary/40" />
+                            <img
+                                src={sl.img}
+                                alt={sl.title}
+                                className="w-full h-full object-cover md:object-center"
+                            />
+                        </div>
 
-                        <img
-                            src={sl.img}
-                            alt={sl.title}
-                            className="w-full h-full object-cover md:object-center"
-                        /* object-cover ke sath aspect ratio puri image dikhayega */
-                        />
-                    </div>
+                        {/* Content */}
+                        <div className="absolute inset-0 z-20 flex flex-col justify-center px-6 max-w-7xl mx-auto pointer-events-none">
+                            <div className="animate-in fade-in slide-in-from-left duration-1000 pointer-events-auto">
+                                <h1 className="text-xl md:text-7xl font-extrabold text-white leading-tight mb-2 md:mb-6 drop-shadow-lg">
+                                    {sl.title}<br />
+                                    <span className="text-primary italic">{sl.em}</span>
+                                </h1>
+
+                                <div className="flex flex-row gap-2 md:gap-4 mt-2">
+                                    <Link to={sl.ctaHref} className="bg-primary text-white px-3 py-2 md:px-8 md:py-4 rounded-lg md:rounded-xl font-bold text-[10px] md:text-lg flex items-center gap-1">
+                                        {sl.cta} <ArrowRight size={12} className="md:w-5 md:h-5" />
+                                    </Link>
+                                    <a href={`tel:${SITE.phone}`} className="bg-white/20 backdrop-blur-sm border border-white/30 text-white px-3 py-2 md:px-8 md:py-4 rounded-lg md:rounded-xl font-bold text-[10px] md:text-lg flex items-center gap-1">
+                                        <Phone size={12} className="md:w-5 md:h-5" /> <span className="md:inline">Call</span>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </SwiperSlide>
                 ))}
-            </div>
+            </Swiper>
 
-            {/* Content: Mobile par isko absolute karke bottom par rakha hai ya center mein */}
-            <div className="absolute inset-0 z-20 flex flex-col justify-center px-6 max-w-7xl mx-auto">
-                <div className="animate-in fade-in slide-in-from-left duration-1000">
-                    <h1 className="text-xl md:text-7xl font-extrabold text-white leading-tight mb-2 md:mb-6 drop-shadow-lg">
-                        {s.title}<br />
-                        <span className="text-primary italic">{s.em}</span>
-                    </h1>
-
-                    {/* Buttons ko mobile par thoda aur compact kiya hai */}
-                    <div className="flex flex-row gap-2 md:gap-4 mt-2">
-                        <Link to={s.ctaHref} className="bg-primary text-white px-3 py-2 md:px-8 md:py-4 rounded-lg md:rounded-xl font-bold text-[10px] md:text-lg flex items-center gap-1">
-                            {s.cta} <ArrowRight size={12} className="md:w-5 md:h-5" />
-                        </Link>
-                        <a href={`tel:${SITE.phone}`} className="bg-white/20 backdrop-blur-sm border border-white/30 text-white px-3 py-2 md:px-8 md:py-4 rounded-lg md:rounded-xl font-bold text-[10px] md:text-lg flex items-center gap-1">
-                            <Phone size={12} className="md:w-5 md:h-5" /> <span className="md:inline">Call</span>
-                        </a>
-                    </div>
-                </div>
-            </div>
-
-            {/* Dots: Inko thoda aur niche kiya hai mobile responsive ke liye */}
-            <div className="absolute bottom-2 md:bottom-10 left-1/2 -translate-x-1/2 z-30 flex gap-1.5 md:gap-3">
-                {SLIDES.map((_, i) => (
-                    <button
-                        key={i}
-                        onClick={() => setCur(i)}
-                        className={`transition-all duration-300 ${i === cur ? 'w-4 md:w-10 bg-primary' : 'w-1.5 md:w-3 bg-white/40'} h-1 md:h-2 rounded-full`}
-                    />
-                ))}
-            </div>
+            <style>{`
+                .hero-swiper-container .swiper-pagination {
+                    bottom: 10px !important;
+                }
+                @media (min-width: 768px) {
+                    .hero-swiper-container .swiper-pagination {
+                        bottom: 40px !important;
+                    }
+                }
+                .hero-swiper-container .custom-bullet {
+                    width: 6px !important;
+                    height: 4px !important;
+                    background: rgba(255, 255, 255, 0.4) !important;
+                    border-radius: 9999px !important;
+                    opacity: 1 !important;
+                    transition: all 0.3s ease !important;
+                    margin: 0 4px !important;
+                    display: inline-block !important;
+                }
+                .hero-swiper-container .swiper-pagination-bullet-active {
+                    width: 16px !important;
+                    background: var(--color-primary, #F97316) !important;
+                }
+                @media (min-width: 768px) {
+                    .hero-swiper-container .custom-bullet {
+                        width: 12px !important;
+                        height: 8px !important;
+                        margin: 0 6px !important;
+                    }
+                    .hero-swiper-container .swiper-pagination-bullet-active {
+                        width: 40px !important;
+                    }
+                }
+            `}</style>
         </section>
     );
 };
+
 
 const StatsSection = () => {
     const [vals, setVals] = useState(STATS.map(() => 0));
@@ -137,13 +154,12 @@ const StatsSection = () => {
 const SavingsCalculator = () => {
     const [bill, setBill] = useState(3000);
 
-    const monthlyUnits = bill / 6;
-    const recommendedKw = Math.max(1, Math.round(monthlyUnits / 120 * 2) / 2);
-    const annualBill = bill * 12;
-    const annualSavingLow = Math.round(annualBill * 0.80 / 1000) * 1000;
-    const annualSavingHigh = Math.round(annualBill * 0.90 / 1000) * 1000;
-    const systemCost = recommendedKw * 50000;
-    const paybackYrs = (systemCost / annualSavingHigh || 4).toFixed(1);
+    const recommendedKw = Math.max(1, Math.round(bill / 1000));
+    const annualSavingLow = Math.round((bill * 10.7) / 1000) * 1000;
+    const annualSavingHigh = Math.round((bill * 12) / 1000) * 1000;
+    const systemCost = recommendedKw * 42000;
+    const paybackLow = (systemCost / annualSavingHigh).toFixed(1);
+    const paybackHigh = (systemCost / annualSavingLow).toFixed(1);
     const lifetimeSaving = annualSavingLow * 25;
 
     const formatINR = (n) => {
@@ -154,55 +170,69 @@ const SavingsCalculator = () => {
 
     const stats = [
         { icon: <Zap size={18} />, label: 'System Size', val: `${recommendedKw} kW`, color: 'text-orange-600', bgColor: 'bg-orange-50' },
-        { icon: <TrendingDown size={18} />, label: 'Annual Save', val: formatINR(annualSavingLow), color: 'text-green-600', bgColor: 'bg-green-50' },
-        { icon: <Star size={18} />, label: 'Payback', val: `${paybackYrs} Yrs`, color: 'text-blue-600', bgColor: 'bg-blue-50' },
-        { icon: <ShieldCheck size={18} />, label: '25Y Total', val: formatINR(lifetimeSaving), color: 'text-purple-600', bgColor: 'bg-purple-50' },
+        { icon: <TrendingDown size={18} />, label: 'Annual Save', val: `${formatINR(annualSavingLow)} - ${formatINR(annualSavingHigh)}`, color: 'text-green-600', bgColor: 'bg-green-50' },
+        { icon: <Star size={18} />, label: 'Payback', val: `${paybackLow} - ${paybackHigh} Yrs`, color: 'text-blue-600', bgColor: 'bg-blue-50' },
+        { icon: <ShieldCheck size={18} />, label: '25Y Total', val: `> ${formatINR(lifetimeSaving)}`, color: 'text-purple-600', bgColor: 'bg-purple-50' },
     ];
 
+
     return (
-        <section className="w-full py-16 px-4 md:px-6 bg-[#F8FAFC]">
-            <div className="max-w-6xl mx-auto">
-                <div className="text-center mb-10">
-                    <h2 className="text-3xl md:text-5xl font-black text-secondary leading-tight">
+        <section className="w-full py-16 px-4 md:px-6 relative overflow-hidden bg-secondary">
+            {/* Background Mesh/Gradient Effects */}
+            <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-primary/10 rounded-full blur-[120px] -translate-y-1/2 translate-x-1/3" />
+            <div className="absolute bottom-0 left-0 w-[400px] h-[400px] bg-blue-500/10 rounded-full blur-[100px] translate-y-1/2 -translate-x-1/4" />
+            
+            <div className="max-w-6xl mx-auto relative z-10">
+                <div className="text-center mb-12">
+                    <div className="inline-block bg-primary/20 text-primary px-4 py-1.5 rounded-full text-[10px] font-bold uppercase tracking-wider mb-4 border border-primary/30">
+                        ROI Estimate
+                    </div>
+                    <h2 className="text-4xl md:text-5xl font-black text-white leading-tight">
                         Check Your <span className="text-primary italic">Savings</span>
                     </h2>
-                    <p className="text-gray-500 text-sm mt-2">Adjust the slider to see your solar ROI</p>
+                    <p className="text-gray-400 text-sm mt-3 max-w-lg mx-auto leading-relaxed">
+                        Adjust the slider to see your solar ROI & potential environmental impact.
+                    </p>
                 </div>
 
-                <div className="grid lg:grid-cols-12 gap-6 items-start">
-                    <div className="lg:col-span-5 bg-white rounded-3xl p-6 md:p-8 shadow-xl shadow-blue-900/5 border border-gray-100">
+                <div className="grid lg:grid-cols-12 gap-8 items-start">
+                    <div className="lg:col-span-5 bg-white/5 backdrop-blur-xl rounded-[2.5rem] p-8 md:p-10 border border-white/10 shadow-2xl">
                         <div className="text-center md:text-left">
-                            <div className="text-[10px] font-bold text-gray-400 uppercase tracking-widest mb-2">Monthly Electricity Bill</div>
-                            <div className="text-5xl font-black text-secondary mb-6">₹{bill.toLocaleString('en-IN')}</div>
-
-                            <input
-                                type="range" min="500" max="30000" step="500" value={bill}
-                                onChange={e => setBill(parseInt(e.target.value))}
-                                className="w-full h-2 bg-gray-100 rounded-lg appearance-none cursor-pointer accent-primary mb-4"
-                            />
-
-                            <div className="flex justify-between text-[10px] font-bold text-gray-400 uppercase mb-8">
-                                <span>₹500</span>
-                                <span className="text-primary">Slide to calculate</span>
-                                <span>₹30k</span>
+                            <div className="text-[10px] font-bold text-gray-400 uppercase tracking-widest mb-3">Monthly Electricity Bill</div>
+                            <div className="text-6xl font-black text-white mb-8 flex items-baseline gap-1">
+                                <span className="text-3xl text-primary font-bold">₹</span>
+                                {bill.toLocaleString('en-IN')}
                             </div>
 
-                            <Link to="/contact" className="flex items-center justify-center gap-2 w-full bg-secondary text-white font-bold py-4 rounded-xl hover:bg-black transition-all shadow-lg shadow-secondary/10 text-sm">
-                                Get Free Quote <ArrowRight size={16} />
+                            <div className="relative mb-10 group">
+                                <input
+                                    type="range" min="500" max="30000" step="500" value={bill}
+                                    onChange={e => setBill(parseInt(e.target.value))}
+                                    className="w-full h-2.5 bg-white/10 rounded-lg appearance-none cursor-pointer accent-primary hover:accent-orange-400 transition-all"
+                                />
+                                <div className="flex justify-between text-[10px] font-bold text-gray-500 uppercase mt-4">
+                                    <span>₹500</span>
+                                    <span className="text-primary/60 group-hover:text-primary transition-colors">Slide to calculate</span>
+                                    <span>₹30k</span>
+                                </div>
+                            </div>
+
+                            <Link to="/contact" className="flex items-center justify-center gap-3 w-full bg-primary text-white font-black py-4.5 rounded-2xl hover:bg-orange-600 active:scale-[0.98] transition-all shadow-[0_10px_20px_-10px_rgba(249,115,22,0.4)] text-base group">
+                                Get Free Quote <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
                             </Link>
                         </div>
                     </div>
 
-                    <div className="lg:col-span-7 grid grid-cols-2 gap-3 md:gap-4">
+                    <div className="lg:col-span-7 grid grid-cols-2 gap-4 md:gap-5">
                         {stats.map((s, i) => (
-                            <div key={i} className="bg-white p-4 md:p-6 rounded-2xl border border-gray-50 shadow-sm flex flex-col items-center text-center sm:items-start sm:text-left">
-                                <div className={`${s.bgColor} ${s.color} p-2.5 rounded-xl mb-3`}>
+                            <div key={i} className="group bg-white/5 backdrop-blur-sm p-6 md:p-8 rounded-[2rem] border border-white/5 hover:border-white/10 hover:bg-white/[0.07] transition-all duration-300 flex flex-col items-center text-center sm:items-start sm:text-left">
+                                <div className={`${s.bgColor} ${s.color} p-3 rounded-2xl mb-4 group-hover:scale-110 transition-transform duration-300`}>
                                     {s.icon}
                                 </div>
-                                <div className="text-[10px] font-bold text-gray-400 uppercase tracking-tight mb-1">
+                                <div className="text-[10px] font-bold text-gray-500 uppercase tracking-tight mb-2">
                                     {s.label}
                                 </div>
-                                <div className="text-lg md:text-2xl font-black text-secondary break-all leading-tight">
+                                <div className="text-xl md:text-3xl font-black text-white break-all leading-tight">
                                     {s.val}
                                 </div>
                             </div>
@@ -237,13 +267,6 @@ const FaqItem = ({ q, a }) => {
 };
 
 const Home = () => {
-    const [index, setIndex] = useState(0);
-    useEffect(() => {
-        const interval = setInterval(() => {
-            setIndex(prev => (prev + 1) % REVIEWS.length);
-        }, 5000);
-        return () => clearInterval(interval);
-    }, []);
 
     const handleWhatsApp = (e) => {
         e.preventDefault();
@@ -295,15 +318,23 @@ const Home = () => {
                             <Link
                                 to={s.href}
                                 key={i}
-                                className="group bg-white p-6 rounded-3xl border border-gray-100 shadow-xl shadow-gray-200/50 hover:-translate-y-2 transition-all duration-300"
+                                className="group relative overflow-hidden rounded-[2.5rem] aspect-[4/3] shadow-xl hover:shadow-2xl transition-all duration-500"
                             >
-                                <div className="text-3xl mb-4 bg-gray-50 w-14 h-14 flex items-center justify-center rounded-2xl group-hover:bg-primary group-hover:text-white transition-colors duration-300">
-                                    {s.icon}
-                                </div>
-                                <h3 className="text-base font-bold text-secondary mb-2">{s.title}</h3>
-                                <p className="text-gray-500 leading-relaxed text-sm mb-4">{s.desc}</p>
-                                <div className="flex items-center text-primary font-bold gap-2 opacity-0 group-hover:opacity-100 transition-opacity text-sm">
-                                    View Details <ArrowRight size={16} />
+                                {/* Background Image */}
+                                <img 
+                                    src={s.img} 
+                                    alt={s.title} 
+                                    className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                                />
+                                {/* Overlay */}
+                                <div className="absolute inset-0 bg-gradient-to-t from-secondary/90 via-secondary/20 to-transparent opacity-70 group-hover:opacity-85 transition-opacity duration-300" />
+                                
+                                {/* Content */}
+                                <div className="absolute inset-0 p-6 flex flex-col justify-end">
+                                    <h3 className="text-lg font-bold text-white mb-1 transform transition-transform duration-300 group-hover:-translate-y-1">{s.title}</h3>
+                                    <div className="flex items-center text-primary font-bold gap-2 opacity-0 group-hover:opacity-100 transition-all duration-300 transform translate-y-2 group-hover:translate-y-0 text-xs">
+                                        Know More <ArrowRight size={14} />
+                                    </div>
                                 </div>
                             </Link>
                         ))}
@@ -377,17 +408,30 @@ const Home = () => {
                     </div>
 
                     {/* Desktop View: Grid (3 columns) | Mobile View: Slider */}
-                    <div className="relative overflow-hidden">
-                        <div
-                            className="flex transition-transform duration-700 ease-in-out md:grid md:grid-cols-3 md:gap-6 md:translate-x-0"
-                            style={{
-                                transform: window.innerWidth < 768 ? `translateX(-${index * 100}%)` : 'none'
+                    {/* Desktop & Mobile View: Swiper Slider */}
+                    <div className="reviews-swiper-container">
+                        <Swiper
+                            modules={[Autoplay, Pagination]}
+                            loop={true}
+                            autoplay={{ delay: 5000, disableOnInteraction: false }}
+                            spaceBetween={20}
+                            slidesPerView={1}
+                            pagination={{
+                                clickable: true,
+                                dynamicBullets: true
                             }}
+                            breakpoints={{
+                                768: {
+                                    slidesPerView: 3,
+                                    spaceBetween: 30,
+                                    autoplay: { delay: 5000 }
+                                }
+                            }}
+                            className="pb-12"
                         >
                             {REVIEWS.map((r, i) => (
-                                <div key={i} className="w-full flex-shrink-0 px-2 md:px-0 md:w-auto">
+                                <SwiperSlide key={i} className="h-auto">
                                     <div className="bg-white border border-gray-100 p-5 rounded-2xl shadow-sm hover:shadow-md transition-all h-full flex flex-col">
-
                                         {/* Google Header Style */}
                                         <div className="flex items-start justify-between mb-3">
                                             <div className="flex items-center gap-3">
@@ -435,20 +479,43 @@ const Home = () => {
                                             </button>
                                         </div>
                                     </div>
-                                </div>
+                                </SwiperSlide>
                             ))}
-                        </div>
+                        </Swiper>
 
-                        {/* Pagination Dots (Mobile Only) */}
-                        <div className="flex justify-center gap-2 mt-8 md:hidden">
-                            {REVIEWS.map((_, idx) => (
-                                <button
-                                    key={idx}
-                                    onClick={() => setIndex(idx)}
-                                    className={`h-1 rounded-full transition-all duration-300 ${index === idx ? "w-6 bg-primary" : "w-1.5 bg-gray-300"}`}
-                                />
-                            ))}
+                        <style>{`
+                            .reviews-swiper-container .swiper-pagination-bullet-active {
+                                background: var(--color-primary, #F97316) !important;
+                            }
+                        `}</style>
+                    </div>
+
+                </div>
+            </section>
+
+            {/* Recent Installations Gallery */}
+            <section className="py-20 px-6 bg-lightBg">
+                <div className="max-w-7xl mx-auto">
+                    <div className="flex flex-col md:flex-row justify-between items-end mb-12 gap-6">
+                        <div className="space-y-3">
+                            <div className="text-primary font-bold uppercase tracking-widest text-sm">Portfolio</div>
+                            <h2 className="text-4xl md:text-5xl font-extrabold text-secondary">Our Recent Installations</h2>
                         </div>
+                        <Link to="/projects" className="bg-secondary text-white px-8 py-4 rounded-2xl font-bold flex items-center gap-2 hover:-translate-y-1 transition mb-2">
+                            View Full Gallery <ArrowRight size={20} />
+                        </Link>
+                    </div>
+
+                    <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 md:gap-5">
+                        {GALLERY.slice(0, 4).map((g, i) => (
+                            <div key={i} className={`relative group overflow-hidden rounded-[2rem] aspect-square ${i === 0 ? 'lg:col-span-2 lg:row-span-2' : ''}`}>
+                                <img src={g.src} alt={g.cap} className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" />
+                                <div className="absolute inset-0 bg-gradient-to-t from-secondary/80 via-secondary/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 p-6 flex flex-col justify-end">
+                                    <span className="text-primary text-xs font-bold uppercase tracking-wider mb-1">{g.cat}</span>
+                                    <h4 className="text-white font-bold text-base">{g.cap}</h4>
+                                </div>
+                            </div>
+                        ))}
                     </div>
                 </div>
             </section>

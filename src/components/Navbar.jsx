@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { Zap, Phone, Menu, X, MessageCircle } from 'lucide-react';
 import { SITE } from '../data/siteData';
+import logo from '../assets/logo.png';
 
 const Navbar = () => {
     const [isOpen, setIsOpen] = useState(false);
@@ -32,15 +33,7 @@ const Navbar = () => {
         <header className={`sticky top-0 z-50 transition-all duration-300 ${scrolled ? 'bg-white/90 backdrop-blur-lg shadow-xl shadow-gray-200/50 py-3' : 'bg-white py-5'}`}>
             <nav className="max-w-7xl mx-auto px-6 flex items-center justify-between">
                 <Link to="/" className="flex items-center gap-2 group">
-                    <div className="bg-primary/10 p-2 rounded-xl group-hover:bg-primary/20 transition-colors">
-                        <Zap className="h-8 w-8 text-primary group-hover:scale-110 transition duration-300" />
-                    </div>
-                    <div className="flex flex-col leading-none">
-                        <span className="text-2xl font-black text-secondary tracking-tighter">
-                            D.<span className="text-primary italic">Energy</span>
-                        </span>
-                        <span className="text-[9px] font-bold text-gray-400 uppercase tracking-widest hidden sm:block">Go Green With Solar Power</span>
-                    </div>
+                    <img src={logo} alt="D.Energy Solar Logo" className="h-10 sm:h-12 w-auto object-contain" />
                 </Link>
 
                 {/* Desktop Nav */}
@@ -89,11 +82,7 @@ const Navbar = () => {
                 <div className="p-6 flex flex-col h-full overflow-y-auto">
                     <div className="flex items-center justify-between mb-8">
                         <Link to="/" onClick={() => setIsOpen(false)} className="flex items-center gap-2">
-                            <Zap className="h-8 w-8 text-primary" />
-                            <div className="flex flex-col leading-none">
-                                <span className="text-xl font-black text-secondary tracking-tighter">D.<span className="text-primary italic">Energy</span></span>
-                                <span className="text-[9px] font-bold text-gray-400 uppercase tracking-widest">Go Green With Solar Power</span>
-                            </div>
+                            <img src={logo} alt="D.Energy Solar Logo" className="h-10 w-auto object-contain" />
                         </Link>
                         <button onClick={() => setIsOpen(false)} className="p-3 bg-gray-50 rounded-xl text-secondary hover:bg-gray-100 transition-colors">
                             <X size={24} />
@@ -123,9 +112,6 @@ const Navbar = () => {
                         </a>
                     </div>
 
-                    <div className="text-center mt-6 text-gray-400 text-xs font-medium uppercase tracking-widest pb-4">
-                        Go Green With Solar Power
-                    </div>
                 </div>
             </div>
         </header>

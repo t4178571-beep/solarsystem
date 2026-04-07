@@ -18,9 +18,15 @@ const Projects = () => {
     return (
         <div className="animate-in fade-in duration-700">
             {/* Page Hero */}
-            <section className="bg-secondary py-20 px-6 relative overflow-hidden">
-                <div className="absolute top-0 right-0 w-full h-full bg-[url('https://www.transparenttextures.com/patterns/carbon-fibre.png')] opacity-10" />
-                <div className="max-w-7xl mx-auto relative z-10 text-center">
+            <section className="py-24 px-6 relative overflow-hidden min-h-[50vh] flex items-center">
+                {/* Background Image with Overlay */}
+                <div 
+                    className="absolute inset-0 bg-cover bg-center bg-no-repeat transition-transform duration-1000 hover:scale-105"
+                    style={{ backgroundImage: "url('/landing/solar-line 2.jpg')" }}
+                />
+                <div className="absolute inset-0 bg-gradient-to-b from-black/80 via-black/60 to-black/80" />
+                
+                <div className="max-w-7xl mx-auto relative z-10 text-center w-full">
                     <span className="inline-block bg-primary text-white text-xs font-bold px-4 py-2 rounded-full uppercase tracking-widest mb-5">
                         Case Studies
                     </span>
@@ -28,7 +34,7 @@ const Projects = () => {
                         Our Recent <br />
                         <span className="text-primary italic">Solar Installations</span>
                     </h1>
-                    <p className="text-gray-400 text-lg max-w-2xl mx-auto">
+                    <p className="text-gray-300 text-lg max-w-2xl mx-auto font-medium">
                         500+ successful projects across Gujarat — helping homes and businesses switch to clean energy every day.
                     </p>
                 </div>
@@ -71,7 +77,7 @@ const Projects = () => {
             </section>
 
             {/* Brands Partner */}
-            <section className="py-20 px-6 bg-white overflow-hidden">
+            {/* <section className="py-20 px-6 bg-white overflow-hidden">
                 <div className="max-w-7xl mx-auto text-center">
                     <div className="text-primary font-bold uppercase tracking-widest text-xs mb-3">Our Partners</div>
                     <h2 className="text-3xl md:text-5xl font-extrabold text-secondary mb-12 leading-tight">
@@ -85,7 +91,7 @@ const Projects = () => {
                         ))}
                     </div>
                 </div>
-            </section>
+            </section> */}
 
             {/* CTA */}
             <section className="py-20 px-6 bg-secondary relative overflow-hidden text-center">
